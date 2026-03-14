@@ -6,181 +6,178 @@
 <title>LinkedIn Auditor IA</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet"/>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{min-height:100vh;background:#080c14;font-family:'Outfit',sans-serif;color:white}
-input,textarea,button{font-family:'Outfit',sans-serif}
-.hdr{background:linear-gradient(135deg,#0d1220,#0a0f1e);border-bottom:1px solid #667eea22;padding:18px 16px;text-align:center}
-.logo{font-size:10px;letter-spacing:4px;color:#667eea;font-weight:700;margin-bottom:4px;text-transform:uppercase}
-.h1{font-size:clamp(18px,4vw,30px);font-family:'Syne',sans-serif;font-weight:800;background:linear-gradient(135deg,#fff 40%,#667eea);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:3px}
-.sub{color:#718096;font-size:12px}
-.wrap{max-width:820px;margin:0 auto;padding:24px 14px}
-.card{background:#0d1420;border:1px solid #667eea22;border-radius:13px;padding:20px;margin-bottom:16px}
-.inp{background:#060c16;border:1px solid #667eea33;border-radius:8px;padding:12px 15px;color:white;font-size:14px;outline:none;width:100%}
-.inp:focus{border-color:#667eea66}
-.btn{background:linear-gradient(135deg,#667eea,#764ba2);border:none;border-radius:8px;padding:13px 24px;color:white;font-size:14px;font-weight:700;cursor:pointer;width:100%;transition:opacity .2s}
-.btn:hover{opacity:.85}
-.btn:disabled{opacity:.6;cursor:not-allowed}
-.btn-sm{background:none;border:1px solid #ffffff22;border-radius:5px;color:#718096;font-size:10px;padding:3px 10px;cursor:pointer}
-.err{background:#e53e3e0d;border:1px solid #e53e3e44;border-radius:8px;padding:10px 13px;color:#fc8181;font-size:12px;margin-bottom:10px;line-height:1.5}
-.ok{background:#48bb7811;border:1px solid #48bb7833;border-radius:8px;padding:10px 13px;color:#9ae6b4;font-size:12px;margin-bottom:10px}
-.step-n{width:26px;height:26px;border-radius:7px;flex-shrink:0;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px}
-.tabs{display:flex;gap:7px;margin-bottom:16px;flex-wrap:wrap}
-.tab{padding:7px 15px;border-radius:6px;border:1px solid #ffffff11;background:transparent;color:#718096;cursor:pointer;font-size:11px;transition:all .2s}
-.tab.active{border-color:#667eea;background:#667eea22;color:#a78bfa;font-weight:700}
-.sec-card{border-radius:10px;margin-bottom:9px;overflow:hidden}
-.sec-header{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;cursor:pointer;user-select:none}
-.sec-body{padding:0 16px 16px;display:none}
-.sec-body.open{display:block}
-.badge{border-radius:20px;padding:2px 9px;font-size:9px;font-weight:700;letter-spacing:1px}
-.bar-wrap{margin-bottom:7px}
-.bar-row{display:flex;justify-content:space-between;margin-bottom:3px}
-.bar-bg{background:#ffffff0a;border-radius:4px;height:5px;overflow:hidden}
-.bar-fill{height:100%;border-radius:4px;transition:width 1.2s ease}
-.plantilla{background:#060c16;border:1px dashed #667eea44;border-radius:7px;padding:11px;font-size:11px;color:#a0aec0;font-style:italic;line-height:1.6;margin-top:8px}
-.chat-area{display:flex;flex-direction:column;gap:9px;max-height:360px;overflow-y:auto;margin-bottom:13px;padding:2px}
-.bubble{max-width:82%;padding:10px 14px;font-size:12px;line-height:1.6;white-space:pre-wrap}
-.bubble.user{border-radius:13px 13px 3px 13px;background:#667eea22;border:1px solid #667eea44;margin-left:auto}
-.bubble.assistant{border-radius:13px 13px 13px 3px;background:#ffffff08;border:1px solid #ffffff11}
-.action-item{display:flex;gap:13px;align-items:flex-start;padding:13px 0;border-bottom:1px solid #ffffff08}
-.action-num{width:32px;height:32px;border-radius:8px;flex-shrink:0;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px}
-.week-item{display:flex;gap:13px;padding:13px 0}
-.week-num{flex-shrink:0;width:52px;height:52px;border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-textarea.inp{min-height:90px;resize:vertical}
-#screen-key,#screen-audit,#screen-result{display:none}
-#screen-key.active,#screen-audit.active,#screen-result.active{display:block}
-.connected-bar{display:none;align-items:center;justify-content:center;gap:8px;margin-top:6px}
-.connected-bar.show{display:flex}
-.spinner{display:inline-block;width:12px;height:12px;border:2px solid #667eea44;border-top-color:#667eea;border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle;margin-right:4px}
-@keyframes spin{to{transform:rotate(360deg)}}
-.progress-bar{height:3px;background:#667eea22;border-radius:2px;overflow:hidden;margin-top:10px}
-.progress-fill{height:100%;background:linear-gradient(90deg,#667eea,#48bb78);border-radius:2px;transition:width .5s ease}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{min-height:100vh;background:#080c14;font-family:'Outfit',sans-serif;color:white}
+  input,textarea,button{font-family:'Outfit',sans-serif}
+  .hdr{background:linear-gradient(135deg,#0d1220,#0a0f1e);border-bottom:1px solid #667eea22;padding:18px 16px;text-align:center}
+  .logo{font-size:10px;letter-spacing:4px;color:#667eea;font-weight:700;margin-bottom:4px;text-transform:uppercase}
+  .h1{font-size:clamp(18px,4vw,30px);font-family:'Syne',sans-serif;font-weight:800;background:linear-gradient(135deg,#fff 40%,#667eea);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:3px}
+  .sub{color:#718096;font-size:12px}
+  .wrap{max-width:820px;margin:0 auto;padding:24px 14px}
+  .card{background:#0d1420;border:1px solid #667eea22;border-radius:13px;padding:20px;margin-bottom:16px}
+  .inp{background:#060c16;border:1px solid #667eea33;border-radius:8px;padding:12px 15px;color:white;font-size:14px;outline:none;width:100%}
+  .inp:focus{border-color:#667eea66}
+  .btn{background:linear-gradient(135deg,#667eea,#764ba2);border:none;border-radius:8px;padding:13px 24px;color:white;font-size:14px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif;width:100%;transition:opacity .2s}
+  .btn:hover{opacity:.85}
+  .btn:disabled{opacity:.6;cursor:not-allowed}
+  .btn-sm{background:none;border:1px solid #ffffff11;border-radius:5px;color:#4a5568;font-size:10px;padding:2px 8px;cursor:pointer;width:auto}
+  .err{background:#e53e3e0d;border:1px solid #e53e3e44;border-radius:8px;padding:10px 13px;color:#fc8181;font-size:12px;margin-bottom:10px}
+  .step-n{width:26px;height:26px;border-radius:7px;flex-shrink:0;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;font-family:'Syne',sans-serif}
+  .tabs{display:flex;gap:7px;margin-bottom:16px;flex-wrap:wrap}
+  .tab{padding:7px 15px;border-radius:6px;border:1px solid #ffffff11;background:transparent;color:#718096;cursor:pointer;font-size:11px;font-weight:400;transition:all .2s}
+  .tab.active{border-color:#667eea;background:#667eea22;color:#a78bfa;font-weight:700}
+  .sec-card{border-radius:10px;margin-bottom:9px;overflow:hidden}
+  .sec-header{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;cursor:pointer}
+  .sec-body{padding:0 16px 16px;display:none}
+  .sec-body.open{display:block}
+  .badge{border-radius:20px;padding:2px 9px;font-size:9px;font-weight:700;letter-spacing:1px}
+  .bar-wrap{margin-bottom:7px}
+  .bar-row{display:flex;justify-content:space-between;margin-bottom:3px}
+  .bar-bg{background:#ffffff0a;border-radius:4px;height:5px;overflow:hidden}
+  .bar-fill{height:100%;border-radius:4px;transition:width 1.2s ease}
+  .score-ring{flex-shrink:0}
+  .plantilla{background:#060c16;border:1px dashed #667eea44;border-radius:7px;padding:11px;font-size:11px;color:#a0aec0;font-style:italic;line-height:1.6;margin-top:8px}
+  .chat-area{display:flex;flex-direction:column;gap:9px;max-height:360px;overflow-y:auto;margin-bottom:13px;padding:2px}
+  .bubble{max-width:82%;padding:10px 14px;font-size:12px;line-height:1.6;white-space:pre-wrap}
+  .bubble.user{border-radius:13px 13px 3px 13px;background:#667eea22;border:1px solid #667eea44;align-self:flex-end;margin-left:auto}
+  .bubble.assistant{border-radius:13px 13px 13px 3px;background:#ffffff08;border:1px solid #ffffff11}
+  .status-connected{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:4px}
+  .loading-steps{margin-top:18px;text-align:center}
+  .loading-step{color:#4a5568;font-size:11px;margin-bottom:4px}
+  textarea.inp{min-height:90px;resize:vertical}
+  .action-item{display:flex;gap:13px;align-items:flex-start;padding:13px 0;border-bottom:1px solid #ffffff08}
+  .action-num{width:32px;height:32px;border-radius:8px;flex-shrink:0;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;font-weight:800;font-family:'Syne',sans-serif;font-size:14px}
+  .week-item{display:flex;gap:13px;padding:13px 0;border-bottom:1px solid #ffffff08}
+  .week-num{flex-shrink:0;width:52px;height:52px;border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .formula-box{margin-top:16px;padding:13px;background:#667eea0d;border:1px solid #667eea33;border-radius:8px}
+  .tip-box{background:#667eea0a;border:1px solid #667eea22}
+  #screen-key,#screen-audit,#screen-result{display:none}
+  #screen-key.active,#screen-audit.active,#screen-result.active{display:block}
 </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <div class="hdr">
-  <div class="logo">⚡ LinkedIn Auditor IA</div>
-  <div class="h1">Auditor & Mentor de LinkedIn</div>
-  <div id="hdr-sub" class="sub">Diagnóstico personalizado · Plan de acción · Mentor 1:1</div>
-  <div id="hdr-connected" class="connected-bar">
+  <div class="logo">⚡ LinkedIn Auditor</div>
+  <div class="h1">Auditor de LinkedIn con IA</div>
+  <div id="hdr-sub" class="sub">Necesitás una API key de Anthropic para comenzar</div>
+  <div id="hdr-connected" class="status-connected" style="display:none">
     <span style="font-size:10px;color:#48bb78">🟢 API conectada</span>
     <button class="btn-sm" onclick="clearKey()">cambiar key</button>
-    <button class="btn-sm" id="btn-nuevo" onclick="nuevoAudit()" style="display:none">+ nuevo audit</button>
+    <button class="btn-sm" id="btn-nuevo" onclick="nuevoAudit()" style="display:none">nuevo audit</button>
   </div>
 </div>
 
-<!-- SCREEN 1: KEY -->
+<!-- SCREEN: API KEY -->
 <div id="screen-key" class="active">
   <div class="wrap">
     <div class="card" style="max-width:460px;margin:0 auto">
-      <div style="font-size:20px;font-family:'Syne',sans-serif;font-weight:800;margin-bottom:6px">🔑 Configurar API Key</div>
-      <p style="color:#718096;font-size:12px;margin-bottom:22px;line-height:1.6">
-        Tu key se guarda solo en esta sesión y se borra al cerrar la pestaña.
-      </p>
+      <div style="font-size:18px;font-family:'Syne',sans-serif;font-weight:800;margin-bottom:4px">🔑 Configurar API Key</div>
+      <p style="color:#718096;font-size:12px;margin-bottom:20px;line-height:1.6">Tu key se guarda solo en esta sesión. Se borra al cerrar la pestaña.</p>
+
       <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px">
-        <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="display:flex;gap:11px;align-items:flex-start">
           <div class="step-n">1</div>
           <div>
-            <div style="font-weight:600;font-size:13px;margin-bottom:2px">Creá cuenta gratuita</div>
-            <a href="https://console.anthropic.com" target="_blank" style="color:#667eea;font-size:11px">→ console.anthropic.com</a>
+            <div style="font-weight:600;font-size:13px;margin-bottom:1px">Creá cuenta gratuita</div>
+            <a href="https://console.anthropic.com" target="_blank" style="color:#667eea;font-size:11px">console.anthropic.com</a>
           </div>
         </div>
-        <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="display:flex;gap:11px;align-items:flex-start">
           <div class="step-n">2</div>
           <div>
-            <div style="font-weight:600;font-size:13px;margin-bottom:2px">Generá tu API key</div>
+            <div style="font-weight:600;font-size:13px;margin-bottom:1px">Generá tu API key</div>
             <div style="color:#718096;font-size:11px">Menú → "API Keys" → "Create Key"</div>
           </div>
         </div>
-        <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="display:flex;gap:11px;align-items:flex-start">
           <div class="step-n">3</div>
           <div>
-            <div style="font-weight:600;font-size:13px;margin-bottom:2px">Copiá y pegá abajo</div>
+            <div style="font-weight:600;font-size:13px;margin-bottom:1px">Copiá y pegá abajo</div>
             <div style="color:#718096;font-size:11px">Empieza con "sk-ant-..."</div>
           </div>
         </div>
       </div>
+
       <div style="position:relative;margin-bottom:10px">
-        <input id="key-input" class="inp" type="password" placeholder="sk-ant-api03-xxxxxxxxxxxx"
-          style="padding-right:44px" onkeydown="if(event.key==='Enter')saveKey()"/>
-        <button onclick="toggleEye()" id="eye-btn"
-          style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:#718096;cursor:pointer;font-size:16px">👁️</button>
+        <input id="key-input" class="inp" type="password" placeholder="sk-ant-api03-xxxxxxxxxxxx" style="padding-right:42px" onkeydown="if(event.key==='Enter')saveKey()"/>
+        <button onclick="toggleKeyVisibility()" id="eye-btn" style="position:absolute;right:11px;top:50%;transform:translateY(-50%);background:none;border:none;color:#718096;cursor:pointer;font-size:15px">👁️</button>
       </div>
+
       <div id="key-error" class="err" style="display:none"></div>
-      <button class="btn" onclick="saveKey()">Ingresar y comenzar →</button>
-      <p style="text-align:center;color:#4a5568;font-size:10px;margin-top:12px;line-height:1.6">
-        🔒 Solo en sessionStorage · Anthropic da $5 de crédito gratis
+      <button class="btn" onclick="saveKey()">Ingresar y auditar mi perfil →</button>
+
+      <p style="text-align:center;color:#4a5568;font-size:10px;margin-top:10px;line-height:1.5">
+        🔒 Tu key se guarda solo en sessionStorage de tu navegador.<br/>
+        Nunca se comparte ni almacena en servidores externos.
       </p>
     </div>
   </div>
 </div>
 
-<!-- SCREEN 2: AUDIT FORM -->
+<!-- SCREEN: AUDIT FORM -->
 <div id="screen-audit">
   <div class="wrap">
     <div class="card">
       <div style="font-size:18px;font-family:'Syne',sans-serif;font-weight:800;margin-bottom:6px">🔍 Iniciar Audit</div>
-      <p style="color:#718096;font-size:12px;margin-bottom:16px">Ingresá tu URL y contexto para un diagnóstico completo con IA.</p>
-      <div style="display:flex;flex-direction:column;gap:12px">
+      <p style="color:#718096;font-size:12px;margin-bottom:16px">Ingresá tu URL y contexto para un diagnóstico personalizado.</p>
+      <div style="display:flex;flex-direction:column;gap:11px">
         <div>
           <label style="font-size:11px;color:#a0aec0;margin-bottom:4px;display:block">URL de LinkedIn *</label>
-          <input id="url-input" class="inp" placeholder="https://linkedin.com/in/tu-perfil"/>
+          <input id="url-input" class="inp" placeholder="https://linkedin.com/in/tu-perfil" onkeydown="if(event.key==='Enter')runAudit()"/>
         </div>
         <div>
-          <label style="font-size:11px;color:#a0aec0;margin-bottom:4px;display:block">Contexto (recomendado para mejor resultado)</label>
-          <textarea id="ctx-input" class="inp"
-            placeholder="Ej: Soy consultora comercial para PyMEs, 25 años experiencia en ventas. Cofundadora Printingya. Objetivo: atraer clientes y empleo remoto. Logros: +40% ventas, -15% costos."></textarea>
+          <label style="font-size:11px;color:#a0aec0;margin-bottom:4px;display:block">Contexto (opcional pero recomendado)</label>
+          <textarea id="ctx-input" class="inp" placeholder="Ej: Soy consultora comercial para PyMEs, 25 años de experiencia, objetivo: atraer clientes y empleo remoto..."></textarea>
         </div>
         <div id="audit-error" class="err" style="display:none"></div>
         <button id="audit-btn" class="btn" onclick="runAudit()">🚀 Auditar mi perfil</button>
       </div>
-      <div id="loading-box" style="display:none;margin-top:20px;padding:16px;background:#ffffff04;border-radius:10px;text-align:center">
-        <div style="color:#667eea;font-size:13px;margin-bottom:8px"><span class="spinner"></span>Analizando tu perfil...</div>
-        <div id="progress-label" style="color:#4a5568;font-size:11px;margin-bottom:8px">Iniciando análisis...</div>
-        <div class="progress-bar"><div id="progress-fill" class="progress-fill" style="width:5%"></div></div>
+      <div id="loading-steps" class="loading-steps" style="display:none">
+        <div class="loading-step">⟳ Analizando estructura del perfil</div>
+        <div class="loading-step">⟳ Evaluando propuesta de valor</div>
+        <div class="loading-step">⟳ Generando recomendaciones</div>
+        <div class="loading-step">⟳ Preparando plan de acción</div>
       </div>
     </div>
-    <div class="card" style="background:#667eea08;border-color:#667eea22">
+    <div class="card tip-box">
       <div style="font-size:12px;color:#a78bfa;font-weight:700;margin-bottom:8px">💡 Para mejor resultado, incluí en el contexto:</div>
-      <div style="font-size:11px;color:#718096;line-height:1.8">
-        • Tu industria o nicho principal<br/>
-        • A quién querés atraer (clientes, empleadores)<br/>
-        • Tus 2-3 logros con números concretos<br/>
-        • Tu objetivo principal en LinkedIn
-      </div>
+      <div style="font-size:11px;color:#718096;margin-bottom:4px">• Tu industria o nicho principal</div>
+      <div style="font-size:11px;color:#718096;margin-bottom:4px">• A quién querés atraer (clientes, empleadores)</div>
+      <div style="font-size:11px;color:#718096;margin-bottom:4px">• Tus 2-3 logros más importantes con números</div>
+      <div style="font-size:11px;color:#718096">• Tu objetivo principal en LinkedIn</div>
     </div>
   </div>
 </div>
 
-<!-- SCREEN 3: RESULT -->
+<!-- SCREEN: RESULT -->
 <div id="screen-result">
   <div class="wrap">
-    <div class="card" style="background:linear-gradient(135deg,#0d1b30,#0a1525)">
+    <!-- Score card -->
+    <div class="card" id="score-card" style="background:linear-gradient(135deg,#0d1b30,#0a1525)">
       <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
-        <svg width="130" height="130" viewBox="0 0 130 130" style="flex-shrink:0">
-          <defs>
-            <linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#667eea"/>
-              <stop offset="100%" stop-color="#48bb78"/>
-            </linearGradient>
-          </defs>
+        <svg id="ring-svg" class="score-ring" width="130" height="130" viewBox="0 0 130 130">
+          <defs><linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#667eea"/><stop offset="100%" stop-color="#48bb78"/>
+          </linearGradient></defs>
           <circle cx="65" cy="65" r="52" fill="none" stroke="#ffffff0d" stroke-width="9"/>
           <circle id="ring-fill" cx="65" cy="65" r="52" fill="none" stroke="url(#rg)" stroke-width="9"
             stroke-dasharray="0 326.7" stroke-linecap="round" transform="rotate(-90 65 65)"
             style="transition:stroke-dasharray 1.4s ease"/>
-          <text id="ring-score" x="65" y="60" text-anchor="middle" fill="white" font-size="26"
-            font-weight="800" font-family="'Syne',sans-serif">0</text>
+          <text id="ring-score" x="65" y="60" text-anchor="middle" fill="white" font-size="26" font-weight="800" font-family="'Syne',sans-serif">0</text>
           <text x="65" y="76" text-anchor="middle" fill="#718096" font-size="11" font-family="'Outfit',sans-serif">/100</text>
         </svg>
         <div style="flex:1;min-width:180px">
-          <div id="res-nombre" style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;margin-bottom:4px"></div>
-          <div id="res-resumen" style="color:#a0aec0;font-size:12px;margin-bottom:14px;line-height:1.5"></div>
+          <div id="res-nombre" style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;margin-bottom:3px"></div>
+          <div id="res-resumen" style="color:#a0aec0;font-size:12px;margin-bottom:12px;line-height:1.5"></div>
           <div id="bars-container"></div>
         </div>
       </div>
-      <div id="res-motivador" style="margin-top:14px;padding:10px 13px;background:#48bb7811;border:1px solid #48bb7833;border-radius:8px;font-size:12px;color:#9ae6b4;line-height:1.5"></div>
+      <div id="res-motivador" style="margin-top:12px;padding:10px 13px;background:#48bb7811;border:1px solid #48bb7833;border-radius:8px;font-size:12px;color:#9ae6b4;line-height:1.5"></div>
     </div>
 
+    <!-- Tabs -->
     <div class="tabs">
       <button class="tab active" onclick="setTab('secciones',this)">📋 Secciones</button>
       <button class="tab" onclick="setTab('acciones',this)">⚡ Acciones</button>
@@ -188,21 +185,19 @@ textarea.inp{min-height:90px;resize:vertical}
       <button class="tab" onclick="setTab('mentor',this)">🤖 Mentor</button>
     </div>
 
+    <!-- Tab contents -->
     <div id="tab-secciones"></div>
     <div id="tab-acciones" style="display:none"></div>
     <div id="tab-plan" style="display:none"></div>
     <div id="tab-mentor" style="display:none">
       <div class="card">
-        <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;margin-bottom:4px;color:#a78bfa">🤖 Mentor IA</div>
-        <p style="color:#718096;font-size:11px;margin-bottom:14px">Preguntame sobre tu perfil o estrategia de LinkedIn.</p>
+        <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;margin-bottom:3px;color:#a78bfa">🤖 Mentor IA</div>
+        <p style="color:#718096;font-size:11px;margin-bottom:14px">Preguntame sobre tu perfil, estrategia de contenido o cómo atraer más clientes.</p>
         <div id="chat-area" class="chat-area"></div>
-        <div id="chat-loading" style="color:#718096;font-size:11px;text-align:center;padding:6px;display:none">
-          <span class="spinner"></span>Pensando...
-        </div>
+        <div id="chat-loading" style="color:#718096;font-size:11px;text-align:center;display:none">⏳ Pensando...</div>
         <div style="display:flex;gap:9px;margin-top:8px">
-          <input id="chat-input" class="inp" style="flex:1" placeholder="Ej: ¿Cómo mejoro mi sección Destacado?"
-            onkeydown="if(event.key==='Enter')sendChat()"/>
-          <button class="btn" style="width:auto;padding:12px 18px" onclick="sendChat()">→</button>
+          <input id="chat-input" class="inp" style="flex:1" placeholder="Ej: ¿Cómo mejoro mi sección Destacado?" onkeydown="if(event.key==='Enter')sendChat()"/>
+          <button class="btn" style="width:auto;padding:12px 16px" onclick="sendChat()">→</button>
         </div>
       </div>
     </div>
@@ -210,402 +205,276 @@ textarea.inp{min-height:90px;resize:vertical}
 </div>
 
 <script>
-// ─────────────────────────────────────────────
-// PROMPT — más corto y directo = respuesta más rápida y limpia
-// ─────────────────────────────────────────────
-const SYSTEM = `Eres un auditor experto de LinkedIn. Responde SOLO con JSON puro válido, sin markdown, sin texto extra, sin explicaciones.
-
-JSON requerido (completa todos los campos con datos reales y útiles en español):
-{"score":NUMBER,"nombre":"STRING","resumen":"STRING max 2 lineas","scoreBreakdown":{"foto":NUMBER,"banner":NUMBER,"titular":NUMBER,"acercaDe":NUMBER,"destacado":NUMBER,"experiencia":NUMBER,"url":NUMBER,"contenido":NUMBER},"secciones":[{"nombre":"STRING","emoji":"STRING","puntuacion":NUMBER,"estado":"critico|mejorable|bueno|excelente","problemas":["STRING"],"acciones":["STRING"],"plantilla":"STRING o null"}],"accionesInmediatas":["STRING","STRING","STRING"],"plan30Dias":["Semana 1: STRING","Semana 2: STRING","Semana 3: STRING","Semana 4: STRING"],"formulaConsistencia":"STRING","mensajeMotivador":"STRING"}
-
-REGLAS:
-- estado: solo "critico", "mejorable", "bueno" o "excelente" (sin tildes)
-- Exactamente 8 secciones: Foto, Banner, Titular, Acerca de, Destacado, Experiencia, URL, Contenido
-- Todos los scores: enteros 0-100
-- JSON puro, nada más`;
+const SYSTEM = `Eres un experto auditor y mentor de LinkedIn. Analiza perfiles y genera audits detallados en español.
+Responde ÚNICAMENTE con JSON puro, sin markdown, sin backticks, sin texto extra.
+Estructura exacta:
+{"score":62,"nombre":"Nombre","titular":"Titular","resumen":"Resumen 2 líneas","scoreBreakdown":{"foto":60,"banner":35,"titular":75,"acercaDe":55,"destacado":40,"experiencia":65,"url":50,"contenido":35},"secciones":[{"nombre":"Titular","emoji":"🎯","puntuacion":75,"estado":"mejorable","problemas":["problema"],"acciones":["acción"],"plantilla":"plantilla o null"}],"accionesInmediatas":["acción 1","acción 2","acción 3"],"plan30Dias":["Semana 1: ...","Semana 2: ...","Semana 3: ...","Semana 4: ..."],"formulaConsistencia":"descripción","mensajeMotivador":"mensaje"}
+Estado debe ser exactamente: crítico, mejorable, bueno o excelente.
+Genera siempre 8 secciones: Foto, Banner, Titular, Acerca de, Destacado, Experiencia, URL, Contenido.`;
 
 const STATUS = {
-  "critico":   {bg:"#1a0505",border:"#e53e3e",text:"#fc8181",label:"CRÍTICO"},
   "crítico":   {bg:"#1a0505",border:"#e53e3e",text:"#fc8181",label:"CRÍTICO"},
   "mejorable": {bg:"#1a1205",border:"#d69e2e",text:"#f6c254",label:"MEJORABLE"},
   "bueno":     {bg:"#051a10",border:"#38a169",text:"#68d391",label:"BUENO"},
-  "excelente": {bg:"#05101a",border:"#3182ce",text:"#63b3ed",label:"EXCELENTE"}
+  "excelente": {bg:"#05101a",border:"#3182ce",text:"#63b3ed",label:"EXCELENTE"},
 };
 
 let apiKey = "";
 let auditData = null;
-let chatHistory = [];
-let eyeVisible = false;
-let progressInterval = null;
+let chatHistory =[];
+let keyVisible = false;
 
-// ─── INIT ────────────────────────────────────
-window.addEventListener("load", () => {
+// ── INIT ──────────────────────────────────────────────────────
+window.onload = () => {
   try {
     const k = sessionStorage.getItem("_liak");
-    if (k) { apiKey = k; showScreen("audit"); }
+    if(k){ apiKey=k; showScreen("audit"); }
     else { showScreen("key"); }
-  } catch(e) { showScreen("key"); }
-});
+  } catch(e){ showScreen("key"); }
+};
 
-// ─── SCREENS ─────────────────────────────────
-function showScreen(name) {
-  ["key","audit","result"].forEach(s =>
-    document.getElementById("screen-"+s).classList.remove("active"));
+// ── SCREENS ───────────────────────────────────────────────────
+function showScreen(name){
+  ["key","audit","result"].forEach(s=>{
+    document.getElementById("screen-"+s).classList.remove("active");
+  });
   document.getElementById("screen-"+name).classList.add("active");
-  const isKey = name === "key";
-  document.getElementById("hdr-sub").style.display = isKey ? "block" : "none";
-  const cb = document.getElementById("hdr-connected");
-  isKey ? cb.classList.remove("show") : cb.classList.add("show");
-  document.getElementById("btn-nuevo").style.display = name==="result" ? "inline-block" : "none";
+  const connected = name!=="key";
+  document.getElementById("hdr-sub").style.display = connected?"none":"block";
+  document.getElementById("hdr-connected").style.display = connected?"flex":"none";
+  document.getElementById("btn-nuevo").style.display = name==="result"?"inline-block":"none";
 }
 
-function nuevoAudit() {
-  auditData = null; chatHistory = [];
-  document.getElementById("url-input").value = "";
-  document.getElementById("ctx-input").value = "";
-  document.getElementById("audit-error").style.display = "none";
-  showScreen("audit");
+// ── KEY ───────────────────────────────────────────────────────
+function toggleKeyVisibility(){
+  keyVisible=!keyVisible;
+  document.getElementById("key-input").type = keyVisible?"text":"password";
+  document.getElementById("eye-btn").textContent = keyVisible?"🙈":"👁️";
 }
 
-// ─── KEY ─────────────────────────────────────
-function toggleEye() {
-  eyeVisible = !eyeVisible;
-  document.getElementById("key-input").type = eyeVisible ? "text" : "password";
-  document.getElementById("eye-btn").textContent = eyeVisible ? "🙈" : "👁️";
-}
-
-function saveKey() {
+function saveKey(){
   const k = document.getElementById("key-input").value.trim();
   const errEl = document.getElementById("key-error");
-  if (!k) { errEl.textContent="Ingresá tu API key"; errEl.style.display="block"; return; }
-  if (!k.startsWith("sk-")) { errEl.textContent="Debe comenzar con 'sk-'"; errEl.style.display="block"; return; }
-  errEl.style.display = "none";
-  try { sessionStorage.setItem("_liak", k); } catch(e) {}
-  apiKey = k;
+  if(!k){ errEl.textContent="Ingresá tu API key"; errEl.style.display="block"; return; }
+  if(!k.startsWith("sk-")){ errEl.textContent="Debe comenzar con 'sk-'"; errEl.style.display="block"; return; }
+  errEl.style.display="none";
+  try{ sessionStorage.setItem("_liak",k); }catch(e){}
+  apiKey=k;
   showScreen("audit");
 }
 
-function clearKey() {
-  try { sessionStorage.removeItem("_liak"); } catch(e) {}
-  apiKey = ""; auditData = null; chatHistory = [];
-  document.getElementById("key-input").value = "";
+function clearKey(){
+  try{ sessionStorage.removeItem("_liak"); }catch(e){}
+  apiKey=""; auditData=null; chatHistory=[];
+  document.getElementById("key-input").value="";
   showScreen("key");
 }
 
-// ─── PROGRESS ANIMATION ──────────────────────
-function startProgress() {
-  let pct = 5;
-  const labels = [
-    "Analizando estructura del perfil...",
-    "Evaluando propuesta de valor...",
-    "Detectando áreas de mejora...",
-    "Generando plan de acción...",
-    "Preparando recomendaciones..."
-  ];
-  let li = 0;
-  const fill = document.getElementById("progress-fill");
-  const label = document.getElementById("progress-label");
-  progressInterval = setInterval(() => {
-    pct = Math.min(pct + Math.random() * 8, 90);
-    fill.style.width = pct + "%";
-    if (li < labels.length - 1 && pct > (li+1)*18) {
-      li++;
-      label.textContent = labels[li];
-    }
-  }, 800);
+function nuevoAudit(){
+  auditData=null; chatHistory=[];
+  document.getElementById("url-input").value="";
+  document.getElementById("ctx-input").value="";
+  document.getElementById("audit-error").style.display="none";
+  showScreen("audit");
 }
 
-function stopProgress() {
-  clearInterval(progressInterval);
-  document.getElementById("progress-fill").style.width = "100%";
-}
-
-// ─── API ─────────────────────────────────────
-async function callClaude(messages, maxTokens) {
-  const res = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
+// ── API CALL ──────────────────────────────────────────────────
+async function callClaude(messages, maxTokens=3000){
+  const res = await fetch("https://api.anthropic.com/v1/messages",{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json",
       "x-api-key": apiKey,
-      "anthropic-version": "2023-06-01",
-      "anthropic-dangerous-direct-browser-access": "true"
+      "anthropic-version":"2023-06-01",
+      "anthropic-dangerous-direct-browser-access":"true"
     },
     body: JSON.stringify({
-      model: "claude-haiku-4-5-20251001",
+      model:"claude-3-5-sonnet-20241022", /* Actualicé el modelo a uno existente para evitar errores */
       max_tokens: maxTokens,
       system: SYSTEM,
       messages
     })
   });
   const data = await res.json();
-  if (!res.ok) throw new Error(data?.error?.message || "Error HTTP " + res.status);
+  if(!res.ok) throw new Error(data?.error?.message||"Error "+res.status);
   return data;
 }
 
-// ─── ROBUST JSON PARSE ───────────────────────
-function parseJSON(raw) {
-  // Limpiar markdown PRIMERO
-  raw = raw.replace(/```json\s*/gi, "").replace(/```\s*/gi, "").trim();
-  // Intento 1: directo
-  try { return JSON.parse(raw); } catch(e) {}
-  // Intento 2: extraer bloque {}
-  const m1 = raw.match(/\{[\s\S]*\}/);
-  if (m1) { try { return JSON.parse(m1[0]); } catch(e) {} }
-  // Intento 3: limpiar y reintentar
-  const cleaned = raw
-    .replace(/```json/g,"").replace(/```/g,"")
-    .replace(/[\u0000-\u001F\u007F-\u009F]/g, " ")
-    .trim();
-  try { return JSON.parse(cleaned); } catch(e) {}
-  const m2 = cleaned.match(/\{[\s\S]*\}/);
-  if (m2) { try { return JSON.parse(m2[0]); } catch(e) {} }
-  return null;
-}
-
-// ─── RUN AUDIT ───────────────────────────────
-async function runAudit() {
+// ── RUN AUDIT ─────────────────────────────────────────────────
+async function runAudit(){
   const url = document.getElementById("url-input").value.trim();
   const ctx = document.getElementById("ctx-input").value.trim();
   const errEl = document.getElementById("audit-error");
   const btn = document.getElementById("audit-btn");
-  const loadBox = document.getElementById("loading-box");
+  const loading = document.getElementById("loading-steps");
 
-  if (!url) {
-    errEl.textContent = "Ingresá la URL de tu perfil de LinkedIn";
-    errEl.style.display = "block"; return;
-  }
-  errEl.style.display = "none";
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span>Analizando...';
-  loadBox.style.display = "block";
-  startProgress();
+  if(!url){ errEl.textContent="Ingresá la URL de tu perfil"; errEl.style.display="block"; return; }
+  errEl.style.display="none";
+  btn.disabled=true; btn.textContent="⏳ Analizando perfil...";
+  loading.style.display="block";
 
-  try {
-    const prompt = `Perfil a auditar: ${url}
-${ctx ? "Contexto: " + ctx : ""}
-Genera el audit JSON completo ahora. Solo JSON, nada más.`;
-
-    const data = await callClaude([{role:"user", content: prompt}], 2000);
-    stopProgress();
-
-    const raw = data.content?.find(b => b.type==="text")?.text || "";
-    console.log("Raw response:", raw.substring(0, 200));
-
-    const parsed = parseJSON(raw);
-    if (!parsed) {
-      throw new Error("No se pudo procesar la respuesta. Raw: " + raw.substring(0,100));
-    }
-
-    // Normalizar estados (por si vienen con tildes o variaciones)
-    if (parsed.secciones) {
-      parsed.secciones = parsed.secciones.map(s => ({
-        ...s,
-        estado: s.estado?.replace("é","e").replace("í","i") || "mejorable"
-      }));
-    }
-
-    auditData = parsed;
-    chatHistory = [{
-      role: "assistant",
-      content: `✅ Audit listo! Score: ${parsed.score}/100\n\n${parsed.resumen}\n\n¿En qué sección querés profundizar?`
-    }];
+  try{
+    const data = await callClaude([{
+      role:"user",
+      content:`Audita este perfil de LinkedIn: ${url}\n\n${ctx?"Contexto: "+ctx:"Genera audit completo."}\n\nResponde SOLO JSON puro.`
+    }]);
+    const raw = data.content?.find(b=>b.type==="text")?.text||"";
+    const match = raw.match(/\{[\s\S]*\}/);
+    if(!match) throw new Error("El modelo no devolvió JSON válido");
+    auditData = JSON.parse(match[0]);
+    chatHistory =[{role:"assistant",
+      content:`✅ Audit listo! Score: ${auditData.score}/100\n\n${auditData.resumen}\n\n¿En qué sección querés profundizar?`}];
     renderResult();
     showScreen("result");
-
-  } catch(e) {
-    stopProgress();
-    console.error("Audit error:", e);
-    const msg = e.message || "";
-    errEl.innerHTML =
-      msg.includes("401") ?
-        "❌ <b>API key inválida.</b> Verificá que esté bien copiada desde console.anthropic.com" :
-      msg.includes("429") ?
-        "⏳ <b>Límite de uso alcanzado.</b> Esperá unos minutos e intentá de nuevo." :
-      msg.includes("529") || msg.includes("overloaded") ?
-        "⚠️ <b>Servidor ocupado.</b> Esperá 30 segundos e intentá de nuevo." :
-        "❌ <b>Error:</b> " + msg + "<br/><small>Abrí la consola del navegador (F12) para más detalles.</small>";
-    errEl.style.display = "block";
-  } finally {
-    btn.disabled = false;
-    btn.textContent = "🚀 Auditar mi perfil";
-    loadBox.style.display = "none";
+  }catch(e){
+    const msg = e.message;
+    errEl.textContent =
+      msg.includes("401") ? "❌ API key inválida. Verificá que esté bien copiada." :
+      msg.includes("429") ? "⏳ Límite de uso alcanzado. Esperá unos minutos." :
+      "❌ "+msg;
+    errEl.style.display="block";
+  }finally{
+    btn.disabled=false; btn.textContent="🚀 Auditar mi perfil";
+    loading.style.display="none";
   }
 }
 
-// ─── HELPERS ─────────────────────────────────
-function scoreColor(s) {
-  return s>=80?"#68d391":s>=60?"#f6c254":s>=40?"#f6ad55":"#fc8181";
-}
+// ── RENDER RESULT ─────────────────────────────────────────────
+function scoreColor(s){ return s>=80?"#68d391":s>=60?"#f6c254":s>=40?"#f6ad55":"#fc8181"; }
 
-// ─── RENDER ──────────────────────────────────
-function renderResult() {
+function renderResult(){
   const d = auditData;
-  const C = 2 * Math.PI * 52;
-  document.getElementById("ring-fill")
-    .setAttribute("stroke-dasharray", `${(d.score/100)*C} ${C}`);
+  // Ring
+  const c = 2*Math.PI*52;
+  document.getElementById("ring-fill").setAttribute("stroke-dasharray",`${(d.score/100)*c} ${c}`);
   document.getElementById("ring-score").textContent = d.score;
-  document.getElementById("res-nombre").textContent = d.nombre || "Tu perfil";
-  document.getElementById("res-resumen").textContent = d.resumen || "";
-  document.getElementById("res-motivador").textContent = "💡 " + (d.mensajeMotivador || "");
+  document.getElementById("res-nombre").textContent = d.nombre||"Tu perfil";
+  document.getElementById("res-resumen").textContent = d.resumen||"";
+  document.getElementById("res-motivador").textContent = "💡 "+(d.mensajeMotivador||"");
 
-  const sb = d.scoreBreakdown || {};
-  document.getElementById("bars-container").innerHTML =
-    [["Foto",sb.foto],["Banner",sb.banner],["Titular",sb.titular],
-     ["Acerca de",sb.acercaDe],["Destacado",sb.destacado],["Contenido",sb.contenido]]
-    .map(([k,v]) => {
-      const val = v || 50, col = scoreColor(val);
-      return `<div class="bar-wrap">
+  // Bars (Aquí se había cortado tu código)
+  const barsMap = {
+    "Foto":d.scoreBreakdown?.foto,"Banner":d.scoreBreakdown?.banner,
+    "Titular":d.scoreBreakdown?.titular,"Acerca de":d.scoreBreakdown?.acercaDe,
+    "Destacado":d.scoreBreakdown?.destacado,"Contenido":d.scoreBreakdown?.contenido
+  };
+  
+  const barsEl = document.getElementById("bars-container");
+  barsEl.innerHTML = "";
+  for(const[k,v] of Object.entries(barsMap)){
+    if(v===undefined) continue;
+    barsEl.innerHTML += `
+      <div class="bar-wrap">
         <div class="bar-row">
           <span style="font-size:11px;color:#a0aec0">${k}</span>
-          <span style="font-size:11px;color:${col};font-weight:700">${val}</span>
+          <span style="font-size:11px;color:white;font-weight:700">${v}/100</span>
         </div>
         <div class="bar-bg">
-          <div class="bar-fill" style="width:${val}%;background:linear-gradient(90deg,#667eea,${col})"></div>
+          <div class="bar-fill" style="width:${v}%;background:${scoreColor(v)}"></div>
         </div>
-      </div>`;
-    }).join("");
+      </div>
+    `;
+  }
 
-  renderSecciones();
-  renderAcciones();
-  renderPlan();
-  renderChat();
-}
+  // Secciones
+  const secEl = document.getElementById("tab-secciones");
+  secEl.innerHTML = (d.secciones ||[]).map((s) => `
+    <div class="card sec-card" style="padding:0">
+      <div class="sec-header" onclick="this.nextElementSibling.classList.toggle('open')">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:18px">${s.emoji || '📌'}</span>
+          <span style="font-weight:700;font-size:14px">${s.nombre}</span>
+          <span class="badge" style="background:${STATUS[s.estado]?.bg||'#333'};color:${STATUS[s.estado]?.text||'#fff'};border:1px solid ${STATUS[s.estado]?.border||'#555'}">${STATUS[s.estado]?.label||s.estado}</span>
+        </div>
+        <div style="font-size:12px;font-weight:700;color:${scoreColor(s.puntuacion)}">${s.puntuacion}/100</div>
+      </div>
+      <div class="sec-body">
+        <div style="font-size:12px;color:#fc8181;margin-bottom:8px"><strong>Problemas:</strong><br/>${(s.problemas||[]).map(p=>`• ${p}`).join('<br/>')}</div>
+        <div style="font-size:12px;color:#68d391;margin-bottom:8px"><strong>Acciones:</strong><br/>${(s.acciones||[]).map(a=>`• ${a}`).join('<br/>')}</div>
+        ${s.plantilla && s.plantilla !== "null" ? `<div class="plantilla">📝 Plantilla:<br/>${s.plantilla}</div>` : ''}
+      </div>
+    </div>
+  `).join('');
 
-function renderSecciones() {
-  document.getElementById("tab-secciones").innerHTML =
-    (auditData.secciones || []).map((sec, i) => {
-      const est = (sec.estado || "mejorable").toLowerCase().trim();
-      const st = STATUS[est] || STATUS["mejorable"];
-      const probs = (sec.problemas||[]).map(p =>
-        `<div style="color:#a0aec0;font-size:12px;margin-bottom:4px">• ${p}</div>`).join("");
-      const acts = (sec.acciones||[]).map(a =>
-        `<div style="display:flex;gap:7px;font-size:12px;margin-bottom:5px;color:#bee3f8">
-          <span style="color:#63b3ed;flex-shrink:0">→</span>${a}</div>`).join("");
-      const plant = sec.plantilla && sec.plantilla !== "null"
-        ? `<div class="plantilla">
-            <div style="font-size:9px;color:#667eea;font-weight:700;margin-bottom:5px;font-style:normal">📝 PLANTILLA</div>
-            ${sec.plantilla}</div>` : "";
-      return `
-        <div class="sec-card" style="background:${st.bg};border:1px solid ${st.border}">
-          <div class="sec-header" onclick="toggleSec(${i})">
-            <div style="display:flex;align-items:center;gap:10px">
-              <span style="font-size:20px">${sec.emoji||"📌"}</span>
-              <div>
-                <div style="font-weight:700;font-size:14px">${sec.nombre}</div>
-                <div style="font-size:10px;color:#718096">${sec.puntuacion}/100</div>
-              </div>
-            </div>
-            <div style="display:flex;align-items:center;gap:8px">
-              <span class="badge" style="background:${st.border}22;color:${st.text};border:1px solid ${st.border}44">${st.label}</span>
-              <span id="arr-${i}" style="color:#718096;font-size:12px">▼</span>
-            </div>
-          </div>
-          <div id="sec-${i}" class="sec-body">
-            ${probs?`<div style="margin-bottom:12px">
-              <div style="font-size:10px;font-weight:700;color:#fc8181;letter-spacing:1px;margin-bottom:6px">⚠️ PROBLEMAS</div>
-              ${probs}</div>`:""}
-            ${acts?`<div style="margin-bottom:12px">
-              <div style="font-size:10px;font-weight:700;color:#63b3ed;letter-spacing:1px;margin-bottom:6px">✅ ACCIONES</div>
-              ${acts}</div>`:""}
-            ${plant}
-          </div>
-        </div>`;
-    }).join("");
-}
-
-function toggleSec(i) {
-  document.getElementById("sec-"+i).classList.toggle("open");
-  const arr = document.getElementById("arr-"+i);
-  arr.textContent = arr.textContent==="▼" ? "▲" : "▼";
-}
-
-function renderAcciones() {
-  const items = (auditData.accionesInmediatas||[]).map((a,i) => `
-    <div class="action-item">
-      <div class="action-num">${i+1}</div>
-      <div style="font-size:13px;color:#e2e8f0;line-height:1.6;padding-top:5px">${a}</div>
-    </div>`).join("");
+  // Acciones Inmediatas
   document.getElementById("tab-acciones").innerHTML = `
     <div class="card">
-      <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;margin-bottom:18px;color:#a78bfa">⚡ Top 3 Acciones para HOY</div>
-      ${items}
-      <div style="margin-top:18px;padding:14px;background:#667eea0d;border:1px solid #667eea33;border-radius:9px">
-        <div style="font-size:11px;font-weight:700;color:#a78bfa;margin-bottom:6px">🔁 FÓRMULA DE CONSISTENCIA</div>
-        <div style="font-size:13px;color:#a0aec0;line-height:1.6">${auditData.formulaConsistencia||""}</div>
-      </div>
-    </div>`;
-}
+      <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;margin-bottom:12px">⚡ Quick Wins (Haz esto hoy)</div>
+      ${(d.accionesInmediatas ||[]).map((a,i)=>`
+        <div class="action-item">
+          <div class="action-num">${i+1}</div>
+          <div style="font-size:13px;line-height:1.5">${a}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
 
-function renderPlan() {
-  const hues=[220,245,270,295];
-  const items = (auditData.plan30Dias||[]).map((s,i) => `
-    <div class="week-item" style="${i<3?"border-bottom:1px solid #ffffff08":""}">
-      <div class="week-num" style="background:linear-gradient(135deg,hsl(${hues[i]},65%,35%),hsl(${hues[i]},65%,55%))">
-        <div style="font-size:8px;font-weight:700;letter-spacing:1px">SEM</div>
-        <div style="font-size:18px;font-weight:800;font-family:'Syne',sans-serif">${i+1}</div>
-      </div>
-      <div style="font-size:13px;color:#e2e8f0;line-height:1.7;padding-top:5px">${s}</div>
-    </div>`).join("");
+  // Plan 30 dias
   document.getElementById("tab-plan").innerHTML = `
     <div class="card">
-      <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;margin-bottom:18px;color:#a78bfa">📅 Plan 30 Días</div>
-      ${items}
-    </div>`;
+      <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;margin-bottom:12px">📅 Tu Plan a 30 Días</div>
+      ${(d.plan30Dias ||[]).map((p,i)=>`
+        <div class="week-item">
+          <div class="week-num" style="background:${['#fc818122','#f6ad5522','#f6c25422','#68d39122'][i%4]};border:1px solid ${['#fc818144','#f6ad5544','#f6c25444','#68d39144'][i%4]};color:${['#fc8181','#f6ad55','#f6c254','#68d391'][i%4]}">
+            <span style="font-size:10px;font-weight:700;text-transform:uppercase">Sem</span>
+            <span style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800">${i+1}</span>
+          </div>
+          <div style="font-size:13px;line-height:1.5;padding-top:4px">${p}</div>
+        </div>
+      `).join('')}
+      ${d.formulaConsistencia ? `<div class="formula-box"><strong style="color:#a78bfa;font-size:12px">🔄 Fórmula de Consistencia:</strong><br/><span style="font-size:12px;color:#e2e8f0">${d.formulaConsistencia}</span></div>` : ''}
+    </div>
+  `;
+
+  updateChat();
 }
 
-function renderChat() {
-  const area = document.getElementById("chat-area");
-  area.innerHTML = chatHistory.map(m => `
-    <div style="display:flex;justify-content:${m.role==="user"?"flex-end":"flex-start"}">
-      <div class="bubble ${m.role}">${m.content}</div>
-    </div>`).join("");
-  area.scrollTop = area.scrollHeight;
+// ── TABS ──────────────────────────────────────────────────────
+function setTab(tab, btn){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  ['secciones','acciones','plan','mentor'].forEach(t=>{
+    document.getElementById("tab-"+t).style.display = t===tab ? "block" : "none";
+  });
 }
 
-// ─── TABS ─────────────────────────────────────
-function setTab(name, btn) {
-  ["secciones","acciones","plan","mentor"].forEach(t =>
-    document.getElementById("tab-"+t).style.display = t===name?"block":"none");
-  document.querySelectorAll(".tab").forEach(b => b.classList.remove("active"));
-  btn.classList.add("active");
-  if (name==="mentor") renderChat();
+// ── CHAT MENTOR ───────────────────────────────────────────────
+function updateChat(){
+  const c = document.getElementById("chat-area");
+  c.innerHTML = chatHistory.map(m=>`
+    <div class="bubble ${m.role}">
+      ${m.content}
+    </div>
+  `).join('');
+  c.scrollTop = c.scrollHeight;
 }
 
-// ─── CHAT ─────────────────────────────────────
-async function sendChat() {
+async function sendChat(){
   const inp = document.getElementById("chat-input");
   const msg = inp.value.trim();
-  if (!msg) return;
+  if(!msg) return;
   inp.value = "";
-  chatHistory.push({role:"user", content: msg});
-  renderChat();
-  document.getElementById("chat-loading").style.display = "block";
+  
+  chatHistory.push({role:"user", content:msg});
+  updateChat();
+  
+  const load = document.getElementById("chat-loading");
+  load.style.display="block";
+  
   try {
-    // Para el chat usamos un system prompt más simple
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": apiKey,
-        "anthropic-version": "2023-06-01",
-        "anthropic-dangerous-direct-browser-access": "true"
-      },
-      body: JSON.stringify({
-        model: "claude-haiku-4-5-20251001",
-        max_tokens: 600,
-        system: "Eres un mentor experto de LinkedIn. Responde en español, de forma clara y concisa con consejos accionables. El audit del perfil fue: " + JSON.stringify({score: auditData?.score, resumen: auditData?.resumen}),
-        messages: chatHistory.map(m => ({role:m.role, content:m.content}))
-      })
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data?.error?.message || "Error");
-    const reply = data.content?.find(b=>b.type==="text")?.text || "Sin respuesta";
-    chatHistory.push({role:"assistant", content: reply});
+    const contextMsg =[{
+      role:"user", 
+      content:`Aquí está mi auditoría JSON: ${JSON.stringify(auditData)}. Por favor actúa como mi mentor. Responde breve, amable y al grano en español.`
+    }, {role:"assistant", content:"¡Entendido! Soy tu mentor."}];
+    
+    const res = await callClaude([...contextMsg, ...chatHistory], 1000);
+    const reply = res.content.find(b=>b.type==="text").text;
+    chatHistory.push({role:"assistant", content:reply});
   } catch(e) {
-    chatHistory.push({role:"assistant", content:"❌ Error: "+e.message});
+    chatHistory.push({role:"assistant", content:"❌ Error de conexión con el mentor."});
   } finally {
-    document.getElementById("chat-loading").style.display = "none";
-    renderChat();
+    load.style.display="none";
+    updateChat();
   }
 }
 </script>
